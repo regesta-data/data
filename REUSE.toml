@@ -1,0 +1,13 @@
+version = 1
+
+[[annotations]]
+path = ["procedures/**", "README.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = ["European Union (source data: European Parliament, European Commission, Publications Office, Council of the EU)", "Manuel Wechner (Berth) (selection, arrangement, linking, derived edges)"]
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = [".github/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Manuel Wechner (Berth)"
+SPDX-License-Identifier = "AGPL-3.0-only"

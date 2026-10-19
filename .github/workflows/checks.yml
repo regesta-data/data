@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2026 Manuel Wechner (Berth)
+#
+# Build rules for the data repository (06-recht-anwaltsfragen.md): G1 no personal data at all,
+# B2-1 no HowTheyVote content and no votes/ directory, B3-1 no individual votes or per-MEP metrics.
+name: Data checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  rules:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: G1, B2-1, B3-1 on all data files
+        run: node .github/scripts/check-rules.ts .

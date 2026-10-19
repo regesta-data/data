@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# SPDX-FileCopyrightText: 2026 Manuel Wechner (Berth)
+#
+# CLA check (06-recht.md 9.1 Nr. 7). Sets the commit status "regesta/cla" on the head commit of every pull request.
+# Branch protection on main requires "regesta/cla" (set up by the organisation owner), so a pull request
+# without CLA cannot be merged. Runs the script from the base branch; the pull request code is never executed.
+name: CLA
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  contents: read
+  pull-requests: read
+  statuses: write
+
+jobs:
+  cla:
+    if: github.event_name == 'pull_request_target' || github.event.issue.pull_request
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Check CLA
+        run: node .github/scripts/cla-check.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
