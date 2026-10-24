@@ -1,6 +1,6 @@
 # Beitragsvereinbarung (CLA) für Regesta
 
-Version 1.0, 19.10.2026. Zwischen Ihnen („Beitragende“) und Manuel Wechner, Einzelunternehmer, handelnd unter der Geschäftsbezeichnung „Berth“, ‹Straße Nr.›, 6622 Berwang, Österreich („Berth“).
+Version 1.0, 19.10.2026. Zwischen Ihnen („Beitragende“) und Manuel Wechner, Einzelunternehmer, handelnd unter der Geschäftsbezeichnung „Berth“, Mitteregg 5, 6622 Berwang, Österreich („Berth“).
 
 > **English note:** This contributor licence agreement exists in German only. To agree, post the sentence `I have read the CLA v1.0 and I agree` as a comment in your pull request.
 
